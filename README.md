@@ -1,5 +1,7 @@
 # BILIOB-STYLE
 给biliob网站编写的CSS样式
+## 预览
+![预览V1.0.1](https://wx1.sinaimg.cn/mw1024/0082AfAFgy1gkjc9egmfrj31hc0u0x6p.jpg)
 ## 安装
 请先下载[stylus](https://add0n.com/stylus.html)插件（或其他CSS插件,然后对CSS文件手动导入）
 
