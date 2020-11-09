@@ -1,7 +1,8 @@
 /* ==UserStyle==
 @name        BILIOB STYLE
 @namespace      ApolloniusSun
-@version        1.0.0
+@version        1.0.1
+@homepageURL    https://github.com/ApolloniusSun/BILIOB-STYL
 @description    A new userstyle;
 @author         Me
 
@@ -17,6 +18,7 @@
 }
 @advanced text CUSTOM_BG "自定义背景" "url()"
 @advanced text HEAD_OPACITY "设置顶栏透明度（0为完全透明，1为完全覆盖背景，允许小数）" "0.6"
+@advanced text CARD_OPACITY "设置卡片透明度（0为完全透明，1为完全覆盖背景，允许小数）" "0.85"
 @advanced text HEAD_BGCOLOR "顶栏背景颜色" "#66CCFF"
 @advanced dropdown DW "外部文字黑白切换（根据背景自行选择）"{
     D "白色文字" <<<EOT #FFFFFF EOT;
@@ -29,12 +31,17 @@
 ==/UserStyle== */
 
 @-moz-document domain("biliob.com") {
+/*更新日志
+    V1.0.0 开工
+    V1.0.1 添加滑动条主题色，卡片半透明
+    */
 :root/*变量区*/
     {
         --thm-color:/*[[THM_COLOR]]*/;
         --a--bgimg:/*[[DIV_BG]]*/;
         --a-bg-custom: /*[[CUSTOM_BG]]*/;
         --a-head-opacity:/*[[HEAD_OPACITY]]*/;
+        --a-card-opacity:/*[[CARD_OPACITY]]*/;
         --outtext-color:/*[[DW]]*/;
         --headertext-color:/*[[HEAD_DW]]*/;
         --header-bg-color:/*[[HEAD_BGCOLOR]]*/;
@@ -76,26 +83,33 @@ div.col div.caption.text--secondary,
 {
     color: var(--outtext-color)!important;
 }
-div.caption.text--secondary,#sponsor-container h3,
+/*主题色*/
+div.caption.text--secondary,#sponsor-container h3/*赞助标题*/,
 button.v-expansion-panel-header h3,
 div i.mdi-information::before,
 div i.mdi-comment-multiple-outline::before,
-div i.mdi-account-group::before,
-div.v-card__actions a span.v-btn__content/*主体部分主题色更改*/
+div i.mdi-account-group::before/*按钮*/,
+div.v-card__actions a span.v-btn__content/*主体部分主题色更改*/,
+h3.px-5.py-1/*分块标题栏主题色*/,
+div.col div.primary--text/*分块与内部数据*/,
+div.v-card__text>a/*TOOLS超链接*/
 {
     color:var(--thm-color)!important;
 }
 div.v-card.v-sheet button.v-btn.v-btn--block.v-btn--contained,
+div.v-slide-group__content div.v-tabs-slider/*滑动条*/,
 div button.v-btn.v-btn--contained.primary/*按钮主题色*/
 {
     background-color:var(--thm-color)!important;
 }
-h3.px-5.py-1/*分块标题栏主题色*/,
-div.col div.primary--text/*分块与内部数据*/,
-[class ^= 'v-tabs-slider']/*滑动条*/,
-div.primary--text.bottom div.v-tabs-slider.primary
+
+/*半透明*/
+div.row.row--dense .v-card,/*主卡片半透明*/
+div.col.col-12 div.v-tabs-bar,div.col.col-12 div.v-expansion-panel/*评论区卡片半透明*/,
+div.row.row--dense div.v-tabs-bar/*独立滑动条栏半透明*/
 {
-    color:var(--thm-color)!important;
+    background:none!important;
+    background-color:rgba(255, 255, 255,var(--a-card-opacity))!important;
 }
 
 
